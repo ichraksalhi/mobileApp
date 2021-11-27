@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React , {useState} from 'react';
-import { StyleSheet, Text, View , TextInput , ScrollView , Image} from 'react-native';
+import { StyleSheet, Text, View , TextInput , ScrollView , Image , TouchableHighlight} from 'react-native';
 import axios from 'axios';
 
 export default function App() {
@@ -21,7 +21,15 @@ export default function App() {
       })
     })
   }
-
+const  MovieDetailPage = imdbID => {
+  axios(apiurl + "&i=" + imdbID).then(({ data }) => {
+    let result = data;
+    console.log('detail',result)
+    setState (prevState => {
+      return {...prevState, selected: result}
+    });
+  });
+}
 
 
   return (
@@ -38,13 +46,18 @@ export default function App() {
       />
       <ScrollView  style={styles.results}> 
       {state.results.map( result => (    
-        <View key={result.imdbID} style= {styles.result}>
+        <TouchableHighlight 
+        key={result.imdbID} 
+        onPress = {() => MovieDetailPage(result.imdbID)}
+        >
+        <View style= {styles.result}>
 
           <Image style = {styles.image} source = {{uri : result.Poster}}/>
 
           <Text style = {styles.heading}> {result.Title} </Text> 
          
              </View>
+             </TouchableHighlight>
       ))}
 
       </ScrollView>
@@ -82,7 +95,7 @@ heading : {
   backgroundColor: '#445565'
 },
 image : {
-width : 300,
+width : '100%',
 height : 300,
 resizeMode : "cover"
 }

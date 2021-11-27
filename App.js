@@ -37,7 +37,7 @@ const  MovieDetailPage = imdbID => {
     <View style={styles.container}>
     
 
-      <Text>FIND YOUR MOVIE</Text>
+      <Text style = {styles.title}>FIND YOUR MOVIE</Text>
       <TextInput 
       style={styles.searchbox}
       
@@ -99,8 +99,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchbox : {
-   fontSize : 20,
-   backgroundColor : '#fff' 
+   fontSize : 30,
+   backgroundColor : '#FF5733' 
   
   }
 ,
@@ -129,6 +129,13 @@ closeBtn : {
   fontSize : 15,
   fontWeight : '700',
   backgroundColor  : '#FF5733'
+},
+title : {
+  color :'#FF5733' ,
+  fontSize : 30 ,
+  fontWeight : '700',
+  textAlign : 'center',
+  marginBottom : 20
 }
 
 });

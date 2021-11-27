@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React , {useState} from 'react';
-import { StyleSheet, Text, View , TextInput , ScrollView} from 'react-native';
+import { StyleSheet, Text, View , TextInput , ScrollView , Image} from 'react-native';
 import axios from 'axios';
 
 export default function App() {
@@ -40,6 +40,8 @@ export default function App() {
       {state.results.map( result => (    
         <View key={result.imdbID} style= {styles.result}>
 
+          <Image style = {styles.image} source = {{uri : result.Poster}}/>
+
           <Text style = {styles.heading}> {result.Title} </Text> 
          
              </View>
@@ -78,5 +80,10 @@ heading : {
   fontWeight : '700',
   padding : 20,
   backgroundColor: '#445565'
+},
+image : {
+width : 300,
+height : 300,
+resizeMode : "cover"
 }
 });

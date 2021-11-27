@@ -62,7 +62,15 @@ const  MovieDetailPage = imdbID => {
 
       </ScrollView>
       <Modal  visible = {(typeof state.selected.Title != "undefined")}>
-        <Text>ccccc</Text>
+        <View>
+           <Text>Title : {state.selected.Title}</Text>
+           <Text> Genre : {state.selected.Genre}</Text>
+           <Text> Director : {state.selected.Director}</Text>
+           <Text> Plot :{state.selected.Plot}</Text>
+           <Text>Cast : {state.selected.Actors}</Text>
+           <Text> rating : {state.selected.imdbRating}</Text>
+        </View>
+        
       </Modal>
     </View>
   );

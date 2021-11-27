@@ -69,6 +69,7 @@ const  MovieDetailPage = imdbID => {
            <Text> Plot :{state.selected.Plot}</Text>
            <Text>Cast : {state.selected.Actors}</Text>
            <Text> rating : {state.selected.imdbRating}</Text>
+           <Image style = {styles.image} source = {{uri : state.selected.Poster}}/>
         </View>
         
       </Modal>

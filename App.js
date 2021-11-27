@@ -33,7 +33,10 @@ const  MovieDetailPage = imdbID => {
 
 
   return (
+    
     <View style={styles.container}>
+    
+
       <Text>FIND YOUR MOVIE</Text>
       <TextInput 
       style={styles.searchbox}
@@ -57,20 +60,30 @@ const  MovieDetailPage = imdbID => {
           <Text style = {styles.heading}> {result.Title} </Text> 
          
              </View>
+
              </TouchableHighlight>
       ))}
 
       </ScrollView>
       <Modal  visible = {(typeof state.selected.Title != "undefined")}>
         <View>
+           <Image style = {styles.image} source = {{uri : state.selected.Poster}}/>
            <Text>Title : {state.selected.Title}</Text>
            <Text> Genre : {state.selected.Genre}</Text>
            <Text> Director : {state.selected.Director}</Text>
            <Text> Plot :{state.selected.Plot}</Text>
            <Text>Cast : {state.selected.Actors}</Text>
            <Text> rating : {state.selected.imdbRating}</Text>
-           <Image style = {styles.image} source = {{uri : state.selected.Poster}}/>
+           
+
         </View>
+        <TouchableHighlight onPress = {()=> setState(prevState => {
+          return {...prevState, selected : {} }
+        })}> 
+
+        <Text style = {styles.closeBtn}> return</Text>
+
+        </TouchableHighlight>
         
       </Modal>
     </View>
@@ -81,7 +94,7 @@ const  MovieDetailPage = imdbID => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFB6C1',
+    backgroundColor: '#FFC300',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -110,5 +123,12 @@ image : {
 width : '100%',
 height : 300,
 resizeMode : "cover"
+},
+closeBtn : {
+  padding : 15,
+  fontSize : 15,
+  fontWeight : '700',
+  backgroundColor  : '#FF5733'
 }
+
 });

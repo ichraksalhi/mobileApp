@@ -12,5 +12,8 @@ expo init mobileApp
 cd mobileApp 
 npm start
 
+# fix problem while running in mobile 
+
+expo start --tunnel
 
 

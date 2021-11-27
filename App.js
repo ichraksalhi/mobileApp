@@ -71,12 +71,12 @@ const  MovieDetailPage = id => {
         <View>
            <Image style = {styles.imageDetail} source = {{uri : state.selected.Poster}}/>
            
-           <Text>Title : {state.selected.Title}</Text>
-           <Text> Genre : {state.selected.Genre}</Text>
-           <Text> Director : {state.selected.Director}</Text>
-           <Text> Plot :{state.selected.Plot}</Text>
-           <Text>Cast : {state.selected.Actors}</Text>
-           <Text> rating : {state.selected.imdbRating}</Text>
+           <Text style = {styles.titlesDetail} >Title : {state.selected.Title}</Text>
+           <Text style = {styles.titlesDetail} > Genre : {state.selected.Genre}</Text>
+           <Text style = {styles.titlesDetail}> Director : {state.selected.Director}</Text>
+           <Text style = {styles.titlesDetail} > Plot :{state.selected.Plot}</Text>
+           <Text style = {styles.titlesDetail} >Cast : {state.selected.Actors}</Text>
+           <Text style = {styles.titlesDetail} > rating : {state.selected.imdbRating}</Text>
            
 
         </View>
@@ -150,6 +150,13 @@ title : {
   fontWeight : '700',
   textAlign : 'center',
   marginBottom : 20
+},
+titlesDetail : {
+  color :'#FF5733' ,
+  fontSize : 20,
+  fontWeight : '50'
+  
+
 }
 
 });

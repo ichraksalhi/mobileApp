@@ -4,7 +4,7 @@ import { StyleSheet, Text, View , TextInput , ScrollView , Image , TouchableHigh
 import axios from 'axios';
 
 export default function App() {
-  const apiurl = "http://www.omdbapi.com/?i=tt3896198&apikey=ca5bdf82";
+  const apiurl = "http://www.omdbapi.com/?apikey=ca5bdf82";
   const [state , setState] = useState({
     s:"",
     results : [], // where i will put req
@@ -21,8 +21,8 @@ export default function App() {
       })
     })
   }
-const  MovieDetailPage = imdbID => {
-  axios(apiurl + "&=" + imdbID).then(({ data }) => {
+const  MovieDetailPage = id => {
+  axios(apiurl + "&i=" + id).then(({ data }) => {
     let result = data;
     console.log('detail',result)
     setState (prevState => {
@@ -50,9 +50,11 @@ const  MovieDetailPage = imdbID => {
       <ScrollView  style={styles.results}> 
       {state.results.map( result => (    
         <TouchableHighlight 
+
         key={result.imdbID}  
         onPress = {() => MovieDetailPage(result.imdbID)}
         >
+          
         <View  style= {styles.result}>
 
           <Image style = {styles.image} source = {{uri : result.Poster}}/>
@@ -67,7 +69,8 @@ const  MovieDetailPage = imdbID => {
       </ScrollView>
       <Modal  visible = {(typeof state.selected.Title != "undefined")}>
         <View>
-           <Image style = {styles.image} source = {{uri : state.selected.Poster}}/>
+           <Image style = {styles.imageDetail} source = {{uri : state.selected.Poster}}/>
+           
            <Text>Title : {state.selected.Title}</Text>
            <Text> Genre : {state.selected.Genre}</Text>
            <Text> Director : {state.selected.Director}</Text>
@@ -130,6 +133,17 @@ closeBtn : {
   fontWeight : '700',
   backgroundColor  : '#FF5733'
 },
+imageDetail : {
+  width : '100%',
+  height : 300,
+  resizeMode : "cover"
+  },
+  closeBtn : {
+    padding : 15,
+    fontSize : 15,
+    fontWeight : '700',
+    backgroundColor  : '#FF5733'
+  },
 title : {
   color :'#FF5733' ,
   fontSize : 30 ,

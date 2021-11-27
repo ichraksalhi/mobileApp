@@ -36,6 +36,16 @@ export default function App() {
       onSubmitEditing={search}
       value={state.s}
       />
+      <ScrollView  style={styles.results}> 
+      {state.results.map( result => (    
+        <View key={result.imdbID} style= {styles.result}>
+
+          <Text style = {styles.heading}> {result.Title} </Text> 
+         
+             </View>
+      ))}
+
+      </ScrollView>
     </View>
   );
 }
@@ -44,7 +54,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#D51F51',
+    backgroundColor: '#FFB6C1',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -54,4 +64,19 @@ const styles = StyleSheet.create({
   
   }
 ,
+results :{
+  flex : 1,
+}, 
+result : {
+  flex : 1 ,
+  width : '100%',
+  marginBottom : 20 
+},
+heading : {
+  color : "#FFF",
+  fontSize : 18 ,
+  fontWeight : '700',
+  padding : 20,
+  backgroundColor: '#445565'
+}
 });
